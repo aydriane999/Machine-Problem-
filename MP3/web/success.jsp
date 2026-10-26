@@ -14,7 +14,7 @@
         <p class="pixel-subtitle">Enter a string below to analyze its composition.</p>
 
         <!-- Form submits to CharacterCountingServlet -->
-        <form action="CharacterCountingServlet" method="POST" onsubmit="return countCharactersPreview(event)">
+        <form action="CharacterCountingServlet" method="POST">
             <label for="inputString" class="pixel-label">Input String</label>
             <input type="text" id="inputString" name="inputString" class="pixel-input" value="${param.inputString != null ? param.inputString : ''}" placeholder="e.g. Hello World 123!" required />
             
@@ -43,32 +43,5 @@
 
     <%@ include file="/WEB-INF/footer.jsp" %>
 
-    <script>
-        function countCharactersPreview(event) {
-            var str = document.getElementById('inputString').value;
-            if (!str) return true;
-
-            event.preventDefault();
-
-            var length = str.length;
-            var digits = 0, vowels = 0, consonants = 0, symbols = 0;
-
-            for (var i = 0; i < str.length; i++) {
-                var ch = str.charAt(i);
-                if (/\d/.test(ch)) digits++;
-                else if (/[aeiouAEIOU]/.test(ch)) vowels++;
-                else if (/[b-df-hj-np-tv-zB-DF-HJ-NP-TV-Z]/.test(ch)) consonants++;
-                else if (!/\s/.test(ch)) symbols++;
-            }
-
-            document.getElementById('resLength').textContent = length;
-            document.getElementById('resDigits').textContent = digits;
-            document.getElementById('resVowels').textContent = vowels;
-            document.getElementById('resConsonants').textContent = consonants;
-            document.getElementById('resSymbols').textContent = symbols;
-
-            return false;
-        }
-    </script>
 </body>
 </html>
