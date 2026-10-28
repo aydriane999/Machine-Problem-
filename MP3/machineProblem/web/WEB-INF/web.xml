@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="2.5" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
+
+    <listener>
+        <listener-class>listeners.AppContextListener</listener-class>
+    </listener>
+
+    <servlet>
+        <servlet-name>LoginServlet</servlet-name>
+        <servlet-class>controllers.LoginServlet</servlet-class>
+        <init-param>
+            <param-name>username</param-name>
+            <param-value>admin</param-value>
+        </init-param>
+        <init-param>
+            <param-name>password</param-name>
+            <param-value>password123</param-value>
+        </init-param>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>LoginServlet</servlet-name>
+        <url-pattern>/LoginServlet</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>CharacterCountingServlet</servlet-name>
+        <servlet-class>controllers.CharacterCountingServlet</servlet-class>
+        <init-param>
+            <param-name>digits</param-name>
+            <param-value>0123456789</param-value>
+        </init-param>
+        <init-param>
+            <param-name>vowels</param-name>
+            <param-value>aeiouAEIOU</param-value>
+        </init-param>
+        <init-param>
+            <param-name>consonants</param-name>
+            <param-value>bcdfghjklmnpqrstvwxyzBCDFGHJKLMNPQRSTVWXYZ</param-value>
+        </init-param>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>CharacterCountingServlet</servlet-name>
+        <url-pattern>/CharacterCountingServlet</url-pattern>
+    </servlet-mapping>
+
+    <welcome-file-list>
+        <welcome-file>index.jsp</welcome-file>
+    </welcome-file-list>
+
+</web-app>
